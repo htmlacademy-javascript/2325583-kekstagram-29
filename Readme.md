@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Эльдар Молдажанов](https://up.htmlacademy.ru/javascript/29/user/2325583).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Конотоп](https://htmlacademy.ru/profile/sineway).
 
 ---
 
