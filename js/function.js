@@ -9,10 +9,6 @@ function checkStringLength(string, maxLength) {
   }
 }
 
-console.log(checkStringLength('проверяемая строка', 20));
-console.log(checkStringLength('проверяемая строка', 18));
-console.log(checkStringLength('проверяемая строка', 10));
-
 // проверка палиндрома
 function isTruePalindrome(string) {
   string = string.replaceAll(' ','');
@@ -26,10 +22,6 @@ function isTruePalindrome(string) {
   return true;
 }
 
-console.log(isTruePalindrome('топот'));
-console.log(isTruePalindrome('ДовОд'));
-console.log(isTruePalindrome('Кекс'));
-
 // функция по извлеканию цифр из строки (не совсем понял честно сказать)
 function TakeDigits(string) {
   const AnyNumber = /\d/g; //взял с интернета d g
@@ -41,8 +33,6 @@ function TakeDigits(string) {
   return parseInt(digits.join(''), 10);
 }
 
-console.log(TakeDigits('2023 год'));
-console.log(TakeDigits('ECMAScript 2022'));
-console.log(TakeDigits('1 кефир, 0.5 батона'));
-console.log(TakeDigits('агент 007'));
-console.log(TakeDigits('а я томат'));
+checkStringLength();
+isTruePalindrome();
+TakeDigits();
