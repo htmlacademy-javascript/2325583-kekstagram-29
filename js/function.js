@@ -1,38 +1,36 @@
-// длина строки
-function checkStringLength(string, maxLength) {
-  const maximumLength = maxLength;
-  const length = string.length;
-  if (length <= maximumLength) {
-    return true;
-  } else {
-    return false;
-  }
+/**
+ * Проверит, подходит ли `value` по длине
+ * @param {string} value
+ * @param {number} maxLength
+ * @returns {boolean}
+ */
+function fitsLength(value, maxLength) {
+  return value.length <= maxLength;
 }
 
-// проверка палиндрома
-function isTruePalindrome(string) {
-  string = string.replaceAll(' ','');
-  string = string.toLowerCase();
+/**
+ * Проверит, является ли `value` палиндромом.
+ * @param {string | number} value
+ * @returns {boolean}
+ */
+function isPalindrome(value) {
+  const normalized = String(value).replaceAll(' ', '') .toLowerCase();
+  const reversed = normalized.split('').reverse().join('');
 
-  for (let i = 0; i < string.length / 2; i++) {
-    if (string[i] !== string[string.length - 1 - i]) {
-      return false;
-    }
-  }
-  return true;
+  return normalized === reversed;
 }
 
-// функция по извлеканию цифр из строки (не совсем понял честно сказать)
-function TakeDigits(string) {
-  const AnyNumber = /\d/g; //взял с интернета d g
-  const digits = string.match(AnyNumber);
+/**
+ * Извлечет из `value` цифры
+ * @param {string | number} value
+ * @returns {number}
+ */
+function parseDigits(value) {
+  const digits = String(value).replace(/[^0-9]+/g, '');
 
-  if (digits === null) {
-    return NaN;
-  }
-  return parseInt(digits.join(''), 10);
+  return digits ? Number(digits) : NaN;
 }
 
-checkStringLength();
-isTruePalindrome();
-TakeDigits();
+fitsLength('string', 10);
+isPalindrome('топот');
+parseDigits('академия2023');
