@@ -13,7 +13,7 @@ const messages = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
 
-const Names = [
+const names = [
   'Александр',
   'Петр',
   'Василий',
@@ -30,6 +30,8 @@ function createPictureArray(length = 25) {
   return items.map((start, index) => createPicture(start + index));
 }
 
+createPictureArray();
+
 /**
  * @param {number} id
  * @returns {Picture}
@@ -38,12 +40,33 @@ function createPicture(id) {
   const url = `photos/${id}.jpg`;
   const description = pickItemFromArray(descriptions);
   const likes = pickIntegerInRange(15, 200);
-  const comments = createPictureCommentArray();
+  const comments = createPictureCommentArray(pickIntegerInRange(0, 30));
 
   return {id, url, description, likes, comments};
 }
 
-console.log(createPictureArray());
+/**
+ * Генерирует от 0 до 30 случайных комментариев
+ * @param {number} length
+ * @returns {Array<PictureComment>}
+ */
+function createPictureCommentArray(length) {
+  const items = new Array(length).fill(1);
+
+  return items.map((start, index) => createPictureComment(start + index));
+}
+
+/**
+ * @param {number} id
+ * @returns {PictureComment}
+ */
+function createPictureComment(id) {
+  const avatar = `img/avatar-${pickIntegerInRange(1, 6)}.svg`;
+  const message = pickItemFromArray(messages);
+  const name = pickItemFromArray(names);
+
+  return {id, avatar, message, name};
+}
 
 /**
  * @template T
@@ -65,29 +88,6 @@ function pickIntegerInRange(min, max) {
   const value = min + Math.random() * (max - min);
 
   return Math.round(value);
-}
-
-/**
- * @returns {PictureComment}
- */
-function createPictureComment() {
-  const avatar = `img/avatar-${pickIntegerInRange(1, 6)}.svg`;
-  const message = pickItemFromArray(messages);
-  const name = pickItemFromArray(Names);
-
-  return {avatar, message, name};
-}
-
-console.log(createPictureComment());
-
-/**
- * Генерирует от 0 до 30 случайных комментариев
- * @returns {Array<PictureComment>}
- */
-function createPictureCommentArray(length = pickIntegerInRange(0, 30)) {
-  const items = new Array(length).fill(1);
-
-  return items.map((start, index) => createPictureComment(start + index));
 }
 
 
