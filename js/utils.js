@@ -1,11 +1,23 @@
 /**
- * Проверит, подходит ли `value` по длине
- * @param {string} value
- * @param {number} maxLength
- * @returns {boolean}
+ * @param {number} min
+ * @param {number} max
+ * @returns {number} целое положительное
  */
-function fitsLength(value, maxLength) {
-  return value.length <= maxLength;
+function pickIntegerInRange(min, max) {
+  const value = min + Math.random() * (max - min);
+
+  return Math.round(value);
+}
+
+/**
+ * @template T
+ * @param {Array<T>} items
+ * @returns {T}
+ */
+function pickItemFromArray(items) {
+  const index = Math.floor(Math.random() * items.length);
+
+  return items[index];
 }
 
 /**
@@ -31,6 +43,9 @@ function parseDigits(value) {
   return digits ? Number(digits) : NaN;
 }
 
-fitsLength('string', 10);
-isPalindrome('топот');
-parseDigits('академия2023');
+export {
+  pickItemFromArray,
+  pickIntegerInRange,
+  isPalindrome,
+  parseDigits,
+};
