@@ -68,11 +68,9 @@ function isWithinWorkingDay(workStart, workEnd, meetingStart, meetingDuration) {
  * @returns {number}
  */
 function parseTime(time) {
-  const parts = time.split(':').map(Number);
-  const [hours, minutes] = parts;
-  const minutesPerHour = 60;
+  const [hours, minutes] = time.split(':').map(Number);
 
-  return hours * minutesPerHour + minutes;
+  return hours * 60 + minutes;
 }
 
 
