@@ -1,5 +1,5 @@
 /**
- * @typedef Picture;
+ * @typedef PictureData;
  * @prop {number} id
  * @prop {string} url
  * @prop {string} description
@@ -14,3 +14,4 @@
  * @prop {string} message
  * @prop {string} name
  */
+
