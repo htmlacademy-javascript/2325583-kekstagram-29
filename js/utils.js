@@ -80,14 +80,6 @@ function isWithinWorkingDay(workStart, workEnd, meetingStart, meetingDuration) {
  * @returns {number}
  */
 function parseTime(time) {
-<<<<<<< Updated upstream
-  const [hours, minutes] = time.split(':').map(Number);
-
-  return hours * 60 + minutes;
-}
-
-
-=======
   const parts = time.split(':').map(Number);
   const [hours, minutes] = parts;
   const minutesPerHour = 60;
@@ -95,7 +87,6 @@ function parseTime(time) {
   return hours * minutesPerHour + minutes;
 }
 
->>>>>>> Stashed changes
 export {
   pickItemFromArray,
   pickIntegerInRange,

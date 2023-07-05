@@ -25,11 +25,7 @@ const names = [
 
 
 /**
-<<<<<<< Updated upstream
- * @param {number} [length]
-=======
  * @param {number} length
->>>>>>> Stashed changes
  * @returns {Array<Picture>}
  */
 function createPictureArray(length = 25) {
@@ -73,20 +69,4 @@ function createPictureComment(id) {
   return {id, avatar, message, name};
 }
 
-<<<<<<< Updated upstream
-/**
- * Проверит, подходит ли `value` по длине
- * @param {string} value
- * @param {number} maxLength
- * @returns {boolean}
- */
-function fitsLength(value, maxLength) {
-  return value.length <= maxLength;
-}
-
-fitsLength('string', 10);
-
-
-=======
->>>>>>> Stashed changes
 export default createPictureArray;
