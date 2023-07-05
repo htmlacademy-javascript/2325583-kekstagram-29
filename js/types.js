@@ -1,5 +1,9 @@
 /**
+<<<<<<< Updated upstream
  * @typedef Picture;
+=======
+ * @typedef Picture
+>>>>>>> Stashed changes
  * @prop {number} id
  * @prop {string} url
  * @prop {string} description

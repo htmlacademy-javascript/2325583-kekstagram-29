@@ -1,9 +1,9 @@
 import {pickItemFromArray, pickIntegerInRange} from './utils.js';
 
 const descriptions = [
-  'описание 1',
-  'описание 2',
-  'описание 3',
+  'Описание 1',
+  'Описание 2',
+  'Описание 3',
 ];
 
 const messages = [
@@ -22,8 +22,14 @@ const names = [
   'Денис',
   'Анастасия'
 ];
+
+
 /**
+<<<<<<< Updated upstream
  * @param {number} [length]
+=======
+ * @param {number} length
+>>>>>>> Stashed changes
  * @returns {Array<Picture>}
  */
 function createPictureArray(length = 25) {
@@ -31,8 +37,6 @@ function createPictureArray(length = 25) {
 
   return items.map((start, index) => createPicture(start + index));
 }
-
-createPictureArray();
 
 /**
  * @param {number} id
@@ -48,7 +52,6 @@ function createPicture(id) {
 }
 
 /**
- * Генерирует от 0 до 30 случайных комментариев
  * @param {number} length
  * @returns {Array<PictureComment>}
  */
@@ -70,6 +73,7 @@ function createPictureComment(id) {
   return {id, avatar, message, name};
 }
 
+<<<<<<< Updated upstream
 /**
  * Проверит, подходит ли `value` по длине
  * @param {string} value
@@ -83,4 +87,6 @@ function fitsLength(value, maxLength) {
 fitsLength('string', 10);
 
 
+=======
+>>>>>>> Stashed changes
 export default createPictureArray;
