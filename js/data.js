@@ -24,7 +24,7 @@ const names = [
 ];
 /**
  * @param {number} [length]
- * @returns {Array<Picture>}
+ * @returns {Array<PictureData>}
  */
 function createPictureArray(length = 25) {
   const items = new Array(length).fill(1);
@@ -36,7 +36,7 @@ createPictureArray();
 
 /**
  * @param {number} id
- * @returns {Picture}
+ * @returns {PictureData}
  */
 function createPicture(id) {
   const url = `photos/${id}.jpg`;
@@ -80,7 +80,44 @@ function fitsLength(value, maxLength) {
   return value.length <= maxLength;
 }
 
+/**
+ * @type {HTMLTemplateElement}
+ */
+const pictureTemplate = document.querySelector('#picture');
+/**
+* Создает DOM-элемент для миниатюры фотографии
+* @param {PictureData} data
+* @returns {HTMLAnchorElement}
+*/
+function createPictureElement(data) {
+  const picture = /**@type {HTMLAnchorElement}*/ (
+    pictureTemplate.content.querySelector('.picture').cloneNode(true)
+  );
+  picture.querySelector('.picture__img').setAttribute('src', data.url);
+  picture.querySelector('.picture__img').setAttribute('alt', data.description);
+  picture.querySelector('.picture__comments').textContent = String(Comment.length);
+  picture.querySelector('.picture__likes').textContent = String(data.likes);
+
+  return picture;
+}
+
+
+/**
+* Отрисовывает миниатюры фотографий на странице.
+* @param {PictureData[]} picturesData
+*/
+function renderThumbnails(picturesData) {
+  const fragment = document.createDocumentFragment();
+  const picturesContainer = document.querySelector('.pictures');
+
+  picturesData.forEach((pictureData) => {
+    const pictureElement = createPictureElement(pictureData);
+    fragment.appendChild(pictureElement);
+  });
+
+  picturesContainer.appendChild(fragment);
+}
+
 fitsLength('string', 10);
-
-
+export {renderThumbnails};
 export default createPictureArray;
