@@ -14,4 +14,3 @@
  * @prop {string} message
  * @prop {string} name
  */
-
