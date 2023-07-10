@@ -1,15 +1,5 @@
 /**
- * @param {number} min
- * @param {number} max
- * @returns {number} целое положительное
- */
-function pickIntegerInRange(min, max) {
-  const value = min + Math.random() * (max - min);
-
-  return Math.round(value);
-}
-
-/**
+ * Выберет случайный элемент из списка `items`.
  * @template T
  * @param {Array<T>} items
  * @returns {T}
@@ -21,19 +11,41 @@ function pickItemFromArray(items) {
 }
 
 /**
- * Проверит, является ли `value` палиндромом.
+ * Выберет случайное число в диапазоне `min` - `max`.
+ * @param {number} min
+ * @param {number} max
+ * @returns {number}
+ */
+function pickIntegerInRange(min, max) {
+  const value = min + Math.random() * (max - min);
+
+  return Math.round(value);
+}
+
+/**
+ * Проверит подходит ли `value` по длине.
+ * @param {string} value
+ * @param {number} length
+ * @returns {boolean}
+ */
+function fitsLength(value, length) {
+  return value.length <= length;
+}
+
+/**
+ * Проверит является ли `value` палиндромом.
  * @param {string | number} value
  * @returns {boolean}
  */
 function isPalindrome(value) {
-  const normalized = String(value).replaceAll(' ', '') .toLowerCase();
+  const normalized = String(value).replaceAll(' ', '').toLowerCase();
   const reversed = normalized.split('').reverse().join('');
 
   return normalized === reversed;
 }
 
 /**
- * Извлечет из `value` цифры
+ * Извлечёт из `value` цифры.
  * @param {string | number} value
  * @returns {number}
  */
@@ -68,15 +80,17 @@ function isWithinWorkingDay(workStart, workEnd, meetingStart, meetingDuration) {
  * @returns {number}
  */
 function parseTime(time) {
-  const [hours, minutes] = time.split(':').map(Number);
+  const parts = time.split(':').map(Number);
+  const [hours, minutes] = parts;
+  const minutesPerHour = 60;
 
-  return hours * 60 + minutes;
+  return hours * minutesPerHour + minutes;
 }
-
 
 export {
   pickItemFromArray,
   pickIntegerInRange,
+  fitsLength,
   isPalindrome,
   parseDigits,
   isWithinWorkingDay,

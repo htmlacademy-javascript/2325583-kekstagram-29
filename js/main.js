@@ -1,5 +1,4 @@
 import createPictureArray from './data.js';
-import {renderThumbnails} from './data.js';
+import initGallery from './gallery.js';
 
-const picturesData = createPictureArray();
-renderThumbnails(picturesData);
+initGallery(createPictureArray());
