@@ -1,5 +1,10 @@
 import {showPopup} from './popup.js';
 
+/**
+ * @type {ReturnType<createCommentsRenderer>}
+ */
+let renderNextComments;
+
 const popup = document.querySelector('.big-picture');
 const commentTemplate = popup.querySelector('.social__comment');
 
@@ -10,9 +15,42 @@ function renderPopup(data) {
   popup.querySelector('.big-picture__img img').setAttribute('src', data.url);
   popup.querySelector('.social__caption').textContent = data.description;
   popup.querySelector('.likes-count').textContent = String(data.likes);
-  popup.querySelector('.social__comments').replaceChildren(...data.comments.map(createComment));
+
+  renderNextComments = createCommentsRenderer(data.comments);
+  renderNextComments();
+  popup.addEventListener('click', onPopupClick);
 
   showPopup(popup);
+}
+
+/**
+ *
+ * @param {MouseEvent & {target: Element}} event
+ */
+function onPopupClick(event) {
+  if (event.target.closest('.comments-loader')){
+    renderNextComments();
+  }
+}
+
+/**
+ * @param {Array<PictureComment>} data
+ */
+function createCommentsRenderer(data, step = 5) {
+  const discussion = popup.querySelector('.social__comments');
+  const loadMoreButton = popup.querySelector('.comments-loader');
+  const[shownCount, totalCount] = popup.querySelectorAll ('.comments-count');
+  const commentsTotal = data.length;
+
+  data = structuredClone(data);
+  discussion.replaceChildren();
+  totalCount.textContent = String(commentsTotal);
+
+  return () => {
+    discussion.append(...data.splice(0, step).map(createComment));
+    loadMoreButton.classList.toggle('hidden', data.length === 0);
+    shownCount.textContent = String(commentsTotal - data.length);
+  };
 }
 
 /**
