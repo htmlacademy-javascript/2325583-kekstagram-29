@@ -1,6 +1,8 @@
 import renderPopup from './upload-popup.js';
 import './pristine-validators.js';
 
+import './pristine-validators.js';
+
 /**
  * @type {HTMLFormElement}
  */
@@ -12,7 +14,6 @@ const pristine = new Pristine(form, {
   errorTextParent: 'img-upload__field-wrapper',
 });
 
-
 form.addEventListener('change', onFormChange);
 form.addEventListener('hide', onFormHide, true);
 form.addEventListener('reset', onFormReset);
@@ -23,9 +24,11 @@ form.addEventListener('reset', onFormReset);
 function onFormChange(event) {
   if (event.target.matches('#upload-file')) {
     const [data] = event.target.files;
-
     renderPopup(data);
   }
+}
+function onFormHide() {
+  form.reset();
 }
 
 function onFormReset() {
