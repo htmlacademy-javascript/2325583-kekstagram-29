@@ -87,6 +87,13 @@ function parseTime(time) {
   return hours * minutesPerHour + minutes;
 }
 
+/**
+ * Разбивает строку слов на массив строк
+ * @param {string} string
+ * @returns {Array<string>}
+ */
+const splitString = (string) => string.toLowerCase().split(' ').filter(Boolean);
+
 export {
   pickItemFromArray,
   pickIntegerInRange,
@@ -95,4 +102,5 @@ export {
   parseDigits,
   isWithinWorkingDay,
   parseTime,
+  splitString
 };
