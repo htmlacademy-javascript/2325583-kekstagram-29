@@ -1,4 +1,4 @@
-import { sliderContainer, effectSlider } from './import-form.js';
+import { effectSlider } from './import-form.js';
 
 // @ts-ignore
 noUiSlider.create (effectSlider, {

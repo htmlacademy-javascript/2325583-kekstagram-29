@@ -8,5 +8,5 @@ export const loadNewPopup = document.querySelector('.img-upload__overlay');
 export const scaleInput = imageLoadForm.querySelector('.scale__control--value');
 export const scaleSmaller = imageLoadForm.querySelector('.scale__control--smaller');
 export const scaleBigger = imageLoadForm.querySelector('.scale__control--bigger');
-export const sliderContainer = imageLoadForm.querySelector('.img-upload__effect-level');
+
 export const effectSlider = imageLoadForm.querySelector('.effect-level__slider');
