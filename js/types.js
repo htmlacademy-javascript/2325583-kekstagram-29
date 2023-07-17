@@ -49,3 +49,7 @@
  * @prop {String} [title]
  * @prop {string} [button]
  */
+
+/**
+ * @typedef {'default' | 'random' | 'discussed'} FilterType
+ */
