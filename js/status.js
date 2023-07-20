@@ -60,4 +60,3 @@ function onDocumentKeydown(event) {
 }
 
 export default renderStatus;
-
