@@ -94,5 +94,4 @@ function createThumbnail(data) {
   return thumbnail;
 }
 
-
 export default initGallery;
